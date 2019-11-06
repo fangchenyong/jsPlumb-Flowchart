@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <script src="/Scripts/boot.js?v=$AppVersion" type="text/javascript"></script>
+    <script src="/Scripts/PlatForm/ComTools.js?v=$AppVersion" type="text/javascript"></script>
+    <script src="/Scripts/PlatForm/WebForm.js?v=$AppVersion" type="text/javascript"></script>
+    <script src="/Form/Init/$Model.data.FormId/$Model.data.FormState/$Model.data.KeyValue"></script>
+    <script type="text/javascript" hasvelocity="true">
+        var KeyValue = "$Model.data.KeyValue";
+        var FormId = "$Model.data.FormId";
+        var FormState = "$Model.data.FormState";
+    </script>
+</head>
+<body>
+    <div class="row" style="height: 100%">
+        <div class="portlet box blue" style="height: 100%">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-reorder"></i>前期工作任务
+                </div>
+                <div class="actions">
+                    <a class="mini-button blue" id="PS_PreM_PreTasks.Effect" onclick="PowerForm.OnBtnEffect(this);" style="display: none"><i class="fa fa-save"></i>生效</a>
+                    <a class="mini-button blue" id="PS_PreM_PreTasks.UnEffect" onclick="PowerForm.OnBtnUnEffect(this);" style="display: none"><i class="fa fa-save"></i>取消生效</a>
+                    <a class="mini-button blue" id="PS_PreM_PreTasks.Save" onclick="PowerForm.OnBtnSave(this)"><i class="fa fa-save"></i>保存</a><!--保存-->
+                    <a class="mini-button blue" id="PS_PreM_PreTasks.Refresh" onclick="PowerForm.OnBtnRefresh(this)"><i class="fa fa-refresh"></i>刷新</a><!--刷新-->
+                    <a class="mini-button blue" id="PS_PreM_PreTasks.CloseForm" onclick="PowerForm.OnBtnCloseForm(this)"><i class="fa fa-power-off"></i>关闭</a><!--关闭-->
+                </div>
+            </div>
+            <div class="mini-fit">
+                <div class="portlet-body" style="height: 100%;">
+                    <div class="mini-tabs" id="maintabs" tabposition="left" tabalign="left" style="height: 100%;">
+                        <div title='基本信息'>
+                            <div id="PS_PreM_PreTasks" class="form">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            状态
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.Status" name="Status" class="mini-combobox" readonly />
+                                        </td>
+                                        <td>
+                                            执行状态
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.StateOfExecu" name="StateOfExecu" class="mini-combobox" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            记录名称
+                                        </td>
+                                        <td  colspan="3">
+                                            <input id="PS_PreM_PreTasks.TaskName" name="TaskName" class="mini-textbox" required="true" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            是否重要
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.IsImportant" name="IsImportant" class="mini-combobox" data="[{ id: '0', text: '否' }, { id: '1', text: '是'}]"/>
+                                        </td>
+                                        <td>
+                                            是否弃用
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.IsAbandon" name="IsAbandon" class="mini-combobox" data="[{ id: '0', text: '否' }, { id: '1', text: '是'}]" />
+                                        </td>
+                                    </tr>
+
+									<tr>
+                                        <td>
+                                            任务类别
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.PreWork_TypeName" name="PreWork_TypeName" class="mini-combobox" />
+                                        </td>
+                                        <td>
+                                            完成百分比
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.FinishPercent" name="FinishPercent"  class="mini-spinner" format="p2" allowlimitvalue="false" changeOnMousewheel="false" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            计划开始时间
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.PlanStartTime" name="PlanStartTime" class="mini-datepicker"/>
+                                        </td>
+                                        <td>
+                                            计划完成时间
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.PlanEndTime" name="PlanEndTime" class="mini-datepicker"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            实际开始时间
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.ActStartTime" name="ActStartTime" class="mini-datepicker" onvaluechanged="ValueChanged"/>
+                                        </td>
+                                        <td>
+                                            实际完成时间
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.ActEndTime" name="ActEndTime" class="mini-datepicker" onvaluechanged="ValueChanged"/>
+                                        </td>
+                                    </tr>
+									<tr>
+                                        <td>进展情况</td>
+                                        <td colspan="3"><input id="PS_PreM_PreTasks.Memo" name="Memo" class="mini-textarea" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            录入人
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.RegHumName" name="RegHumName" class="mini-textbox" readonly="readonly" />
+                                        </td>
+                                        <td>
+                                            录入日期
+                                        </td>
+                                        <td>
+                                            <input id="PS_PreM_PreTasks.RegDate" name="RegDate" class="mini-datepicker" readonly="readonly" />
+                                        </td>
+                                    </tr>
+                                    <tr style="display:none">
+                                        <td>
+                                            图形节点Id
+                                        </td>
+                                        <td ><input id="PS_PreM_PreTasks.TemplateManageId" name="TemplateManageId" class="mini-textbox" /></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div title="附件" name="attachfile" url=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        var PowerForm = new WebForm();
+        $(function () {
+            PowerForm.Init();
+        });
+
+        //传递给绘图页面参数
+        var TaskName = "";
+        var IsSave = false;//判断是否保存
+        var IsImportant = false;
+        var IsAbandon = false;
+
+        //保存前判断
+        PowerForm.EventBeforeOnBtnSave = function (e) {
+            e.isValid = true;
+            if (e.id == "PS_PreM_PreTasks.Save") {
+                TaskName = mini.get("PS_PreM_PreTasks.TaskName").value;
+                IsImportant = mini.get("PS_PreM_PreTasks.IsImportant").value;
+                IsAbandon = mini.get("PS_PreM_PreTasks.IsAbandon").value;
+                IsSave = true;
+                if (mini.get("PS_PreM_PreTasks.PlanStartTime").getValue() != "" && mini.get("PS_PreM_PreTasks.PlanEndTime").getValue() != "") {
+                    if (mini.get("PS_PreM_PreTasks.PlanStartTime").getValue() > mini.get("PS_PreM_PreTasks.PlanEndTime").getValue()) {
+                        Power.ui.alert("计划开始时间不能晚于计划完成时间!");
+                        e.isValid = false;
+                        return;
+                    }
+                }
+                if (mini.get("PS_PreM_PreTasks.ActStartTime").getValue() != "" && mini.get("PS_PreM_PreTasks.ActEndTime").getValue() != "") {
+                    if (mini.get("PS_PreM_PreTasks.ActStartTime").getValue() > mini.get("PS_PreM_PreTasks.ActEndTime").getValue()) {
+                        Power.ui.alert("实际开始时间不能晚于实际完成时间!");
+                        e.isValid = false;
+                        return;
+                    }
+                }
+            }
+        }
+        PowerForm.EventBeforeSaveData = function (data, e) {
+            if(FormState=='add'){
+                var MasterId = request("MasterId");
+                data.PS_PreM_PreTasks.data[0].MasterId = MasterId
+            }
+        }
+        function ValueChanged(e) {
+            if (e.sender.id == "PS_PreM_PreTasks.ActStartTime") {
+                var ActStartTime = mini.get("PS_PreM_PreTasks.ActStartTime");
+                if (ActStartTime) {
+                    mini.get("PS_PreM_PreTasks.StateOfExecu").setValue('InTheExecution');
+                }
+            }
+            if (e.sender.id == "PS_PreM_PreTasks.ActEndTime") {
+                var ActEndTime = mini.get("PS_PreM_PreTasks.ActEndTime");
+                if (ActEndTime) {
+                    mini.get("PS_PreM_PreTasks.StateOfExecu").setValue('Completed');
+                }
+            }
+        }
+ 
+        PowerForm.EventAfterFormLoad = function (e) {
+            if (formconfig.FormState == "add") {
+            //    mini.get("PS_PreM_PreTasks.TakeEffect").setEnabled(false);
+               // mini.get("PS_PreM_PreTasks.StateOfExecu").setValue('NotBeginning');
+            }
+            var TemplateManageId = request("TemplateManageId");
+            mini.get("PS_PreM_PreTasks.TemplateManageId").setValue(TemplateManageId);
+        }
+      
+    </script>
+</body>
+</html>
