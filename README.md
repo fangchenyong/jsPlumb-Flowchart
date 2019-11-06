@@ -1,23 +1,3 @@
----
-title: jsplumb绘制流程图
-date: 2019-11-06 22:12:23
-tags: 
-	- JavaScript
-	- Jsplumb
-categories: 
-	- JavaScript
-	- Jsplumb
-keywords: 
-	- JavaScript
-	- Jsplumb
-description: jsplumb绘制流程图
-top_img: 
-comments: true
-toc: true
-toc_number: true
-top: false
----
-
 背景：公司项目需要一个能绘制流程图的功能，能绘制能保存，并且能够将每个节点和表单数据关联起来。决定使用jsPlumb，然后在github查阅资料看到[demo-jsPlumb](https://github.com/smile1828/demo-jsPlumb)，在这个基础上进行了修改完善，一些细节方面也进行了优化，非常感谢 smile1828。
 
 功能：
